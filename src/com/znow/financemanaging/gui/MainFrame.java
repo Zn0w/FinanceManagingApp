@@ -25,6 +25,17 @@ class MainFrame extends JPanel {
 		JButton reportsButton = new JButton("See income/expense reports");
 		reportsButton.setAlignmentX(JPanel.CENTER_ALIGNMENT);
 		add(reportsButton);
+		
+		JPanel buttonPane = new JPanel();
+		
+		JButton addIncomeButton = new JButton("Add income");
+		buttonPane.add(addIncomeButton);
+		
+		JButton addExpenseButton = new JButton("Add Expense");
+		buttonPane.add(addExpenseButton);
+		
+		buttonPane.setAlignmentX(JPanel.CENTER_ALIGNMENT);
+		add(buttonPane);
 	}
 	
 }
