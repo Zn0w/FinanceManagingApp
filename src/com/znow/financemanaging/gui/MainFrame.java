@@ -14,28 +14,25 @@ class MainFrame extends JPanel {
 		balanceLabel.setAlignmentX(JPanel.CENTER_ALIGNMENT);
 		add(balanceLabel);
 		
+		JPanel categoriesButtonsPane = new JPanel();
 		JButton incomeCatButton = new JButton("Income categories");
-		incomeCatButton.setAlignmentX(JPanel.CENTER_ALIGNMENT);
-		add(incomeCatButton);
-		
+		categoriesButtonsPane.add(incomeCatButton);
 		JButton expenseCatButton = new JButton("Expense categories");
-		expenseCatButton.setAlignmentX(JPanel.CENTER_ALIGNMENT);
-		add(expenseCatButton);
+		categoriesButtonsPane.add(expenseCatButton);
+		categoriesButtonsPane.setAlignmentX(JPanel.CENTER_ALIGNMENT);
+		add(categoriesButtonsPane);
 		
 		JButton reportsButton = new JButton("See income/expense reports");
 		reportsButton.setAlignmentX(JPanel.CENTER_ALIGNMENT);
 		add(reportsButton);
 		
-		JPanel buttonPane = new JPanel();
-		
+		JPanel addButtonsPane = new JPanel();
 		JButton addIncomeButton = new JButton("Add income");
-		buttonPane.add(addIncomeButton);
-		
+		addButtonsPane.add(addIncomeButton);
 		JButton addExpenseButton = new JButton("Add Expense");
-		buttonPane.add(addExpenseButton);
-		
-		buttonPane.setAlignmentX(JPanel.CENTER_ALIGNMENT);
-		add(buttonPane);
+		addButtonsPane.add(addExpenseButton);
+		addButtonsPane.setAlignmentX(JPanel.CENTER_ALIGNMENT);
+		add(addButtonsPane);
 	}
 	
 }
