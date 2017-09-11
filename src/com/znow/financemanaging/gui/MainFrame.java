@@ -5,16 +5,19 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.znow.financemanaging.controllers.Controller;
+import com.znow.financemanaging.controllers.MainFrameController;
 
 class MainFrame extends JPanel {
 	
-	private Controller controller = new Controller();
+	private MainFrameController controller;
 	
-	MainFrame() {
+	MainFrame(AppWindow appWindow) {
+		controller = new MainFrameController(appWindow);
+		
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
 		JLabel balanceLabel = new JLabel("Your balance:");
@@ -26,7 +29,7 @@ class MainFrame extends JPanel {
 		incomeCatButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				System.out.println("income cat");
+				controller.onIncomeCatButton();
 			}
 		});
 		categoriesButtonsPane.add(incomeCatButton);
@@ -34,7 +37,7 @@ class MainFrame extends JPanel {
 		expenseCatButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				System.out.println("expense cat");
+				controller.onExpenseCatButton();
 			}
 		});
 		categoriesButtonsPane.add(expenseCatButton);
@@ -45,7 +48,7 @@ class MainFrame extends JPanel {
 		reportsButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				System.out.println("see reports");
+				controller.onReportsButton();
 			}
 		});
 		reportsButton.setAlignmentX(JPanel.CENTER_ALIGNMENT);
@@ -56,7 +59,7 @@ class MainFrame extends JPanel {
 		addIncomeButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				System.out.println("add income");
+				controller.onAddIncomeButton();
 			}
 		});
 		addButtonsPane.add(addIncomeButton);
@@ -64,7 +67,7 @@ class MainFrame extends JPanel {
 		addExpenseButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				System.out.println("add expense");
+				controller.onAddExpenseButton();
 			}
 		});
 		addButtonsPane.add(addExpenseButton);
