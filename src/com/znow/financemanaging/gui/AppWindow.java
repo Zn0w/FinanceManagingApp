@@ -14,7 +14,7 @@ public class AppWindow extends Window {
 	}
 	
 	public void drawIncomeCategoriesFrame() {
-		IncomeCategoriesFrame incomeCatFrame = new IncomeCategoriesFrame();
+		IncomeCategoriesFrame incomeCatFrame = new IncomeCategoriesFrame(this);
 		setContentPane(incomeCatFrame);
 		pack();
 	}
