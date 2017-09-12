@@ -1,6 +1,7 @@
 package com.znow.financemanaging.controllers;
 
 import com.znow.financemanaging.gui.AppWindow;
+import com.znow.financemanaging.gui.PromptWindow;
 
 public class MainFrameController {
 	
@@ -23,11 +24,13 @@ public class MainFrameController {
 	}
 	
 	public void onAddIncomeButton() {
-		
+		PromptWindow incomePrompt = new PromptWindow();
+		incomePrompt.drawAddIncomePrompt();
 	}
 	
 	public void onAddExpenseButton() {
-		
+		PromptWindow expensePrompt = new PromptWindow();
+		expensePrompt.drawAddExpensePrompt();
 	}
 	
 }

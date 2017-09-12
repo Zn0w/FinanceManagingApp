@@ -1,5 +1,6 @@
 package com.znow.financemanaging.gui;
 
+@SuppressWarnings("serial")
 public class AppWindow extends Window {
 	
 	public AppWindow() {
@@ -13,15 +14,21 @@ public class AppWindow extends Window {
 	}
 	
 	public void drawIncomeCategoriesFrame() {
-		System.out.println("draw income cat frame");
+		IncomeCategoriesFrame incomeCatFrame = new IncomeCategoriesFrame();
+		setContentPane(incomeCatFrame);
+		pack();
 	}
 	
 	public void drawExpenseCategoriesFrame() {
-		System.out.println("draw expense cat frame");
+		ExpenseCategoriesFrame expenseCatFrame = new ExpenseCategoriesFrame();
+		setContentPane(expenseCatFrame);
+		pack();
 	}
 	
 	public void drawReportsFrame() {
-		System.out.println("draw reports frame");
+		ReportsFrame reportsFrame = new ReportsFrame();
+		setContentPane(reportsFrame);
+		pack();
 	}
 	
 }
