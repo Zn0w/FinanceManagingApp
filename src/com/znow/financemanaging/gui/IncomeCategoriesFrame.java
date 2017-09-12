@@ -1,5 +1,8 @@
 package com.znow.financemanaging.gui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -25,9 +28,19 @@ class IncomeCategoriesFrame extends JPanel{
 		
 		for (String incomeCategory : incomeCategories) {
 			JButton incomeCatButton = new JButton(incomeCategory);
+			categoriesPane.add(incomeCatButton);
 		}
 		
 		add(categoriesPane);
+		
+		JButton addIncomeCatButton = new JButton("Add income category");
+		addIncomeCatButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
+		add(addIncomeCatButton);
 	}
 	
 }
