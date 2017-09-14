@@ -29,6 +29,12 @@ class IncomeCategoriesFrame extends JPanel{
 		
 		for (String incomeCategory : incomeCategories) {
 			JButton incomeCatButton = new JButton(incomeCategory);
+			incomeCatButton.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					controller.onIncomeCategoryButton(incomeCategory);
+				}
+			});
 			categoriesPane.add(incomeCatButton);
 		}
 		
@@ -38,7 +44,7 @@ class IncomeCategoriesFrame extends JPanel{
 		addIncomeCatButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				
+				controller.onAddIncomeCategoryButton();
 			}
 		});
 		add(addIncomeCatButton);
