@@ -1,5 +1,6 @@
 package com.znow.financemanaging.gui;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -22,16 +23,16 @@ class IncomeCategoriesFrame extends JPanel{
 		String[] incomeCategories = controller.getIncomeCategories();
 		
 		JPanel categoriesPane = new JPanel();
-		JScrollPane scrollPane = new JScrollPane(categoriesPane);
-		
 		categoriesPane.setLayout(new BoxLayout(categoriesPane, BoxLayout.Y_AXIS));
+		JScrollPane scrollPane = new JScrollPane(categoriesPane);
+		scrollPane.setPreferredSize(new Dimension(100, 100));
 		
 		for (String incomeCategory : incomeCategories) {
 			JButton incomeCatButton = new JButton(incomeCategory);
 			categoriesPane.add(incomeCatButton);
 		}
 		
-		add(categoriesPane);
+		add(scrollPane);
 		
 		JButton addIncomeCatButton = new JButton("Add income category");
 		addIncomeCatButton.addActionListener(new ActionListener() {
