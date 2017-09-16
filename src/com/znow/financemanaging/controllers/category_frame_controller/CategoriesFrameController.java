@@ -25,7 +25,8 @@ public class CategoriesFrameController {
 	}
 	
 	public void onCategoryButton(String category) {
-		// open income category window
+		PromptWindow prompt = new PromptWindow();
+		prompt.drawCategoryPrompt(this, category);
 	}
 	
 	public void onBackButton() {
@@ -43,6 +44,11 @@ public class CategoriesFrameController {
 	
 	public void onSubmitCategoryButton(String category) {
 		// assert value and save category to file
+	}
+	
+	public void onDeleteCategoryButton(String category) {
+		ExpenseDao expenseDao = new ExpenseDao();
+		expenseDao.deleteCategory(category);
 	}
 	
 }

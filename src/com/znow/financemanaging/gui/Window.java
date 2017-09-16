@@ -2,6 +2,7 @@ package com.znow.financemanaging.gui;
 
 import javax.swing.JFrame;
 
+@SuppressWarnings("serial")
 class Window extends JFrame {
 	
 	protected void init() {

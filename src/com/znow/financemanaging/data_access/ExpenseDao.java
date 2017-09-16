@@ -30,4 +30,8 @@ public class ExpenseDao {
 		return expenseCategories;
 	}
 	
+	public void deleteCategory(String category) {
+		
+	}
+	
 }

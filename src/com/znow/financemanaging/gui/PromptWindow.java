@@ -26,6 +26,35 @@ public class PromptWindow extends Window {
 		
 	}
 	
+	public void drawCategoryPrompt(CategoriesFrameController controller, String category) {
+		JPanel root = new JPanel();
+		root.setLayout(new BoxLayout(root, BoxLayout.Y_AXIS));
+		setContentPane(root);
+		
+		JLabel guideLabel = new JLabel("Do you want to delete '" + category + "'?");
+		add(guideLabel);
+		
+		JButton yesButton = new JButton("Yes");
+		yesButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				controller.onDeleteCategoryButton(category);
+			}
+		});
+		add(yesButton);
+		
+		JButton noButton = new JButton("No");
+		noButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		add(noButton);
+		
+		pack();
+	}
+	
 	public void drawAddCategoryPrompt(CategoriesFrameController controller, String key) {
 		JPanel root = new JPanel();
 		root.setLayout(new BoxLayout(root, BoxLayout.Y_AXIS));
