@@ -7,7 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class IncomeCategoriesDao {
+public class IncomeDao {
 	
 	private File incomeCategoriesFile = new File("resources/incomeCategories.txt");
 	

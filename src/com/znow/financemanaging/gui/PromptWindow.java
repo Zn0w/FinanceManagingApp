@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.znow.financemanaging.controllers.IncomeCategoriesFrameController;
+import com.znow.financemanaging.controllers.category_frame_controller.CategoriesFrameController;
 
 @SuppressWarnings("serial")
 public class PromptWindow extends Window {
@@ -26,22 +26,22 @@ public class PromptWindow extends Window {
 		
 	}
 	
-	public void drawAddIncomeCategoryPrompt(IncomeCategoriesFrameController controller) {
+	public void drawAddCategoryPrompt(CategoriesFrameController controller, String key) {
 		JPanel root = new JPanel();
 		root.setLayout(new BoxLayout(root, BoxLayout.Y_AXIS));
 		setContentPane(root);
 		
-		JLabel guideLabel = new JLabel("Enter income category name:");
+		JLabel guideLabel = new JLabel("Enter " + key + " category name:");
 		add(guideLabel);
 		
-		JTextField incomeCategoryNameTxt = new JTextField();
-		add(incomeCategoryNameTxt);
+		JTextField categoryNameTxt = new JTextField();
+		add(categoryNameTxt);
 		
-		JButton submitButton = new JButton("Add income category");
+		JButton submitButton = new JButton("Add " + key + " category");
 		submitButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller.onSubmitIncomeCategoryButton(incomeCategoryNameTxt.getText());
+				controller.onSubmitCategoryButton(categoryNameTxt.getText());
 			}
 		});
 		add(submitButton);
