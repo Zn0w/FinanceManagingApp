@@ -39,6 +39,7 @@ public class PromptWindow extends Window {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				controller.onDeleteCategoryButton(category);
+				dispose();
 			}
 		});
 		add(yesButton);
@@ -71,6 +72,7 @@ public class PromptWindow extends Window {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				controller.onSubmitCategoryButton(categoryNameTxt.getText());
+				dispose();
 			}
 		});
 		add(submitButton);

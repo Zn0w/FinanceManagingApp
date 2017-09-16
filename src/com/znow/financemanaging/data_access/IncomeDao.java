@@ -31,4 +31,8 @@ public class IncomeDao {
 		return incomeCategories;
 	}
 	
+	public void deleteCategory(String category) {
+		
+	}
+	
 }

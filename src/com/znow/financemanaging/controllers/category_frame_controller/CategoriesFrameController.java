@@ -1,7 +1,6 @@
 package com.znow.financemanaging.controllers.category_frame_controller;
 
-import com.znow.financemanaging.data_access.ExpenseDao;
-import com.znow.financemanaging.data_access.IncomeDao;
+import com.znow.financemanaging.data_access.CategoriesDao;
 import com.znow.financemanaging.gui.AppWindow;
 import com.znow.financemanaging.gui.PromptWindow;
 
@@ -16,12 +15,7 @@ public class CategoriesFrameController {
 	}
 	
 	public String[] getCategories() {
-		if (key == CategoryFrameControllerKey.INCOME_CATEGORIES)
-			return new IncomeDao().readIncomeCategoriesFile().toArray(new String[0]);
-		else if (key == CategoryFrameControllerKey.EXPENSE_CATEGORIES)
-			return new ExpenseDao().readExpenseCategoriesFile().toArray(new String[0]);
-		else
-			return new String[5];
+			return new CategoriesDao(key).readCategoriesFile().toArray(new String[0]);
 	}
 	
 	public void onCategoryButton(String category) {
@@ -43,12 +37,23 @@ public class CategoriesFrameController {
 	}
 	
 	public void onSubmitCategoryButton(String category) {
-		// assert value and save category to file
+		CategoriesDao categoriesDao = new CategoriesDao(key);
+		categoriesDao.createCategory(category);
+		
+		if (key == CategoryFrameControllerKey.EXPENSE_CATEGORIES)
+			appWindow.drawExpenseCategoriesFrame();
+		else if (key == CategoryFrameControllerKey.INCOME_CATEGORIES)
+			appWindow.drawIncomeCategoriesFrame();
 	}
 	
 	public void onDeleteCategoryButton(String category) {
-		ExpenseDao expenseDao = new ExpenseDao();
-		expenseDao.deleteCategory(category);
+		CategoriesDao categoriesDao = new CategoriesDao(key);
+		categoriesDao.deleteCategory(category);
+		
+		if (key == CategoryFrameControllerKey.EXPENSE_CATEGORIES)
+			appWindow.drawExpenseCategoriesFrame();
+		else if (key == CategoryFrameControllerKey.INCOME_CATEGORIES)
+			appWindow.drawIncomeCategoriesFrame();
 	}
 	
 }
