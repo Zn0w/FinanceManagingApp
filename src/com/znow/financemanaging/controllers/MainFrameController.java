@@ -24,13 +24,17 @@ public class MainFrameController {
 	}
 	
 	public void onAddIncomeButton() {
-		PromptWindow incomePrompt = new PromptWindow();
-		incomePrompt.drawAddIncomePrompt();
+		PromptWindow prompt = new PromptWindow();
+		prompt.drawMoneyTransferPrompt(this, "income");
 	}
 	
 	public void onAddExpenseButton() {
-		PromptWindow expensePrompt = new PromptWindow();
-		expensePrompt.drawAddExpensePrompt();
+		PromptWindow prompt = new PromptWindow();
+		prompt.drawMoneyTransferPrompt(this, "expense");
+	}
+	
+	public void onSubmitMoneyTransfer(String transfer) {
+		
 	}
 	
 }

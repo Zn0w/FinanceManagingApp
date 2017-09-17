@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.znow.financemanaging.controllers.MainFrameController;
 import com.znow.financemanaging.controllers.category_frame_controller.CategoriesFrameController;
 
 @SuppressWarnings("serial")
@@ -18,12 +19,38 @@ public class PromptWindow extends Window {
 		init();
 	}
 	
-	public void drawAddIncomePrompt() {
+	public void drawMoneyTransferPrompt(MainFrameController controller, String transfer) {
+		JPanel root = new JPanel();
+		root.setLayout(new BoxLayout(root, BoxLayout.Y_AXIS));
+		setContentPane(root);
 		
-	}
-	
-	public void drawAddExpensePrompt() {
+		// CategorySelector
 		
+		JLabel guideLabelAmount = new JLabel("Amount:");
+		add(guideLabelAmount);
+		
+		JTextField amountTxt = new JTextField();
+		add(amountTxt);
+		
+		JLabel guideLabelComment = new JLabel("Comment:");
+		add(guideLabelComment);
+		
+		JTextField commentTxt = new JTextField();
+		add(commentTxt);
+		
+		// DateSelector
+		
+		JButton submitButton = new JButton("Add " + transfer);
+		submitButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				controller.onSubmitMoneyTransfer(transfer);
+			}
+		});
+		add(submitButton);
+		
+		pack();
 	}
 	
 	public void drawCategoryPrompt(CategoriesFrameController controller, String category) {
