@@ -11,8 +11,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.znow.financemanaging.business_logic.category.CategoryKey;
+import com.znow.financemanaging.business_logic.money_transfer.MoneyTransfer;
 import com.znow.financemanaging.controllers.CategoriesFrameController;
 import com.znow.financemanaging.controllers.MainFrameController;
+
+import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
+import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
+import net.sourceforge.jdatepicker.impl.UtilDateModel;
 
 @SuppressWarnings("serial")
 public class PromptWindow extends Window {
@@ -21,16 +26,12 @@ public class PromptWindow extends Window {
 		init();
 	}
 	
-	public void drawMoneyTransferPrompt(MainFrameController controller, String transfer) {
+	public void drawMoneyTransferPrompt(MainFrameController controller, CategoryKey key) {
 		JPanel root = new JPanel();
 		root.setLayout(new BoxLayout(root, BoxLayout.Y_AXIS));
 		setContentPane(root);
 		
-		String[] categories = { "null", "null", "null", "null", "null" };
-		if (transfer.equals("income"))
-			categories = controller.getCategories(CategoryKey.INCOME_CATEGORIES);
-		else if (transfer.equals("expense"))
-			categories = controller.getCategories(CategoryKey.EXPENSE_CATEGORIES);
+		String[] categories = controller.getCategories(key);
 		
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		JComboBox categorySelector = new JComboBox(categories);
@@ -54,13 +55,27 @@ public class PromptWindow extends Window {
 		JTextField commentTxt = new JTextField();
 		add(commentTxt);
 		
-		// DateSelector
+		UtilDateModel model = new UtilDateModel();
+		JDatePanelImpl datePanel = new JDatePanelImpl(model);
+		JDatePickerImpl datePicker = new JDatePickerImpl(datePanel);
+		 
+		add(datePicker);
 		
-		JButton submitButton = new JButton("Add " + transfer);
+		String transferStr = "null";
+		if (key == CategoryKey.INCOME_CATEGORIES)
+			transferStr = "income";
+		else if (key == CategoryKey.EXPENSE_CATEGORIES)
+			transferStr = "expense";
+		
+		JButton submitButton = new JButton("Add " + transferStr);
 		submitButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
+				
+				MoneyTransfer transfer = new MoneyTransfer(key, amountTxt.getText(), 
+						commentTxt.getText(), datePicker.getModel().getValue().toString());
+				
 				controller.onSubmitMoneyTransfer(transfer);
 			}
 		});
