@@ -9,15 +9,15 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import com.znow.financemanaging.controllers.category_frame_controller.CategoriesFrameController;
-import com.znow.financemanaging.controllers.category_frame_controller.CategoryFrameControllerKey;
+import com.znow.financemanaging.business_logic.category.CategoryKey;
+import com.znow.financemanaging.controllers.CategoriesFrameController;
 
 @SuppressWarnings("serial")
 class CategoriesFrame extends JPanel {
 	
 	private CategoriesFrameController controller;
 	
-	CategoriesFrame(AppWindow appWindow, CategoryFrameControllerKey key) {
+	CategoriesFrame(AppWindow appWindow, CategoryKey key) {
 		controller = new CategoriesFrameController(appWindow, key);
 		
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -43,9 +43,9 @@ class CategoriesFrame extends JPanel {
 		add(scrollPane);
 		
 		String keyStr = "";
-		if (key == CategoryFrameControllerKey.INCOME_CATEGORIES)
+		if (key == CategoryKey.INCOME_CATEGORIES)
 			keyStr = "income";
-		else if (key == CategoryFrameControllerKey.EXPENSE_CATEGORIES)
+		else if (key == CategoryKey.EXPENSE_CATEGORIES)
 			keyStr = "expense";
 		else
 			keyStr = "null";

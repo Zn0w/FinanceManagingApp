@@ -1,6 +1,6 @@
 package com.znow.financemanaging.gui;
 
-import com.znow.financemanaging.controllers.category_frame_controller.CategoryFrameControllerKey;
+import com.znow.financemanaging.business_logic.category.CategoryKey;
 
 @SuppressWarnings("serial")
 public class AppWindow extends Window {
@@ -16,13 +16,13 @@ public class AppWindow extends Window {
 	}
 	
 	public void drawIncomeCategoriesFrame() {
-		CategoriesFrame incomeCatFrame = new CategoriesFrame(this, CategoryFrameControllerKey.INCOME_CATEGORIES);
+		CategoriesFrame incomeCatFrame = new CategoriesFrame(this, CategoryKey.INCOME_CATEGORIES);
 		setContentPane(incomeCatFrame);
 		pack();
 	}
 	
 	public void drawExpenseCategoriesFrame() {
-		CategoriesFrame expenseCatFrame = new CategoriesFrame(this, CategoryFrameControllerKey.EXPENSE_CATEGORIES);
+		CategoriesFrame expenseCatFrame = new CategoriesFrame(this, CategoryKey.EXPENSE_CATEGORIES);
 		setContentPane(expenseCatFrame);
 		pack();
 	}

@@ -1,5 +1,7 @@
 package com.znow.financemanaging.controllers;
 
+import com.znow.financemanaging.business_logic.category.CategoryKey;
+import com.znow.financemanaging.data_access.CategoriesDao;
 import com.znow.financemanaging.gui.AppWindow;
 import com.znow.financemanaging.gui.PromptWindow;
 
@@ -35,6 +37,10 @@ public class MainFrameController {
 	
 	public void onSubmitMoneyTransfer(String transfer) {
 		
+	}
+	
+	public String[] getCategories(CategoryKey key) {
+		return new CategoriesDao(key).readCategoriesFile().toArray(new String[0]);
 	}
 	
 }

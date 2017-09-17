@@ -5,12 +5,14 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.znow.financemanaging.business_logic.category.CategoryKey;
+import com.znow.financemanaging.controllers.CategoriesFrameController;
 import com.znow.financemanaging.controllers.MainFrameController;
-import com.znow.financemanaging.controllers.category_frame_controller.CategoriesFrameController;
 
 @SuppressWarnings("serial")
 public class PromptWindow extends Window {
@@ -24,7 +26,21 @@ public class PromptWindow extends Window {
 		root.setLayout(new BoxLayout(root, BoxLayout.Y_AXIS));
 		setContentPane(root);
 		
-		// CategorySelector
+		String[] categories = { "null", "null", "null", "null", "null" };
+		if (transfer.equals("income"))
+			categories = controller.getCategories(CategoryKey.INCOME_CATEGORIES);
+		else if (transfer.equals("expense"))
+			categories = controller.getCategories(CategoryKey.EXPENSE_CATEGORIES);
+		
+		@SuppressWarnings({ "unchecked", "rawtypes" })
+		JComboBox categorySelector = new JComboBox(categories);
+		categorySelector.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
+		add(categorySelector);
 		
 		JLabel guideLabelAmount = new JLabel("Amount:");
 		add(guideLabelAmount);

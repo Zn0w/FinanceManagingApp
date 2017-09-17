@@ -7,16 +7,16 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import com.znow.financemanaging.controllers.category_frame_controller.CategoryFrameControllerKey;
+import com.znow.financemanaging.business_logic.category.CategoryKey;
 
 public class CategoriesDao {
 	
 	private File categoriesFile;
 	
-	public CategoriesDao(CategoryFrameControllerKey key) {
-		if (key == CategoryFrameControllerKey.INCOME_CATEGORIES)
+	public CategoriesDao(CategoryKey key) {
+		if (key == CategoryKey.INCOME_CATEGORIES)
 			categoriesFile = new File("resources/incomeCategories.txt");
-		else if (key == CategoryFrameControllerKey.EXPENSE_CATEGORIES)
+		else if (key == CategoryKey.EXPENSE_CATEGORIES)
 			categoriesFile = new File("resources/expenseCategories.txt");
 	}
 	

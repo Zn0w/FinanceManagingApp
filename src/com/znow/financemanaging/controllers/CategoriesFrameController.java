@@ -1,5 +1,6 @@
-package com.znow.financemanaging.controllers.category_frame_controller;
+package com.znow.financemanaging.controllers;
 
+import com.znow.financemanaging.business_logic.category.CategoryKey;
 import com.znow.financemanaging.data_access.CategoriesDao;
 import com.znow.financemanaging.gui.AppWindow;
 import com.znow.financemanaging.gui.PromptWindow;
@@ -7,15 +8,15 @@ import com.znow.financemanaging.gui.PromptWindow;
 public class CategoriesFrameController {
 	
 	private AppWindow appWindow;
-	private CategoryFrameControllerKey key;
+	private CategoryKey key;
 	
-	public CategoriesFrameController(AppWindow appWindow, CategoryFrameControllerKey key) {
+	public CategoriesFrameController(AppWindow appWindow, CategoryKey key) {
 		this.appWindow = appWindow;
 		this.key = key;
 	}
 	
 	public String[] getCategories() {
-			return new CategoriesDao(key).readCategoriesFile().toArray(new String[0]);
+		return new CategoriesDao(key).readCategoriesFile().toArray(new String[0]);
 	}
 	
 	public void onCategoryButton(String category) {
@@ -30,9 +31,9 @@ public class CategoriesFrameController {
 	public void onAddCategoryButton() {
 		PromptWindow prompt = new PromptWindow();
 		
-		if (key == CategoryFrameControllerKey.INCOME_CATEGORIES)
+		if (key == CategoryKey.INCOME_CATEGORIES)
 			prompt.drawAddCategoryPrompt(this, "income");
-		else if (key == CategoryFrameControllerKey.EXPENSE_CATEGORIES)
+		else if (key == CategoryKey.EXPENSE_CATEGORIES)
 			prompt.drawAddCategoryPrompt(this, "expense");
 	}
 	
@@ -40,9 +41,9 @@ public class CategoriesFrameController {
 		CategoriesDao categoriesDao = new CategoriesDao(key);
 		categoriesDao.createCategory(category);
 		
-		if (key == CategoryFrameControllerKey.EXPENSE_CATEGORIES)
+		if (key == CategoryKey.EXPENSE_CATEGORIES)
 			appWindow.drawExpenseCategoriesFrame();
-		else if (key == CategoryFrameControllerKey.INCOME_CATEGORIES)
+		else if (key == CategoryKey.INCOME_CATEGORIES)
 			appWindow.drawIncomeCategoriesFrame();
 	}
 	
@@ -50,9 +51,9 @@ public class CategoriesFrameController {
 		CategoriesDao categoriesDao = new CategoriesDao(key);
 		categoriesDao.deleteCategory(category);
 		
-		if (key == CategoryFrameControllerKey.EXPENSE_CATEGORIES)
+		if (key == CategoryKey.EXPENSE_CATEGORIES)
 			appWindow.drawExpenseCategoriesFrame();
-		else if (key == CategoryFrameControllerKey.INCOME_CATEGORIES)
+		else if (key == CategoryKey.INCOME_CATEGORIES)
 			appWindow.drawIncomeCategoriesFrame();
 	}
 	
