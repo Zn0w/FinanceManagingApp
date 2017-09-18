@@ -43,7 +43,8 @@ public class MainFrameController {
 		System.out.println(transfer.getComment());
 		System.out.println(transfer.getDate());
 		
-		new MoneyTransferDao().createMoneyTransfer(transfer);
+		MoneyTransferDao moneyTransferDao = new MoneyTransferDao();
+		moneyTransferDao.createMoneyTransfer(transfer);
 	}
 	
 	public String[] getCategories(CategoryKey key) {
