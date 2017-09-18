@@ -1,6 +1,11 @@
 package com.znow.financemanaging.data_access;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.znow.financemanaging.business_logic.category.CategoryKey;
@@ -14,9 +19,30 @@ public class MoneyTransferDao {
 			file = new File("resources/expenseTransfers.txt");
 		else if (key == CategoryKey.INCOME_CATEGORIES)
 			file = new File("resources/incomeTransfers.txt");
+		else
+			file = new File("");
 		
-		// get money transfers from file
-		return null;
+		BufferedReader reader;
+		List<MoneyTransfer> moneyTransfers = new ArrayList<MoneyTransfer>();
+		
+		try {
+			reader = new BufferedReader(new FileReader(file));
+			
+			String line = "";
+			
+			while ((line = reader.readLine()) != null) {
+				String[] components = line.split(";");
+				
+				MoneyTransfer moneyTranfer = new MoneyTransfer(key, components[1], 
+						components[2], components[3]);
+				moneyTransfers.add(moneyTranfer);
+			}
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return moneyTransfers;
 	}
 	
 	public void createMoneyTransfer(MoneyTransfer transfer) {
@@ -25,8 +51,19 @@ public class MoneyTransferDao {
 			file = new File("resources/expenseTransfers.txt");
 		else if (transfer.getKey() == CategoryKey.INCOME_CATEGORIES)
 			file = new File("resources/incomeTransfers.txt");
+		else
+			file = new File("");
 		
-		// save money transfer info into the file
+		FileWriter writer = null;
+		
+		try {
+			writer = new FileWriter(file, true);
+			writer.write("\n" + transfer.getAmount() + ";" + transfer.getComment() + ";" +
+					transfer.getDate());
+			writer.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }
