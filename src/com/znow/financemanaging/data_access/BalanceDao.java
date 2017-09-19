@@ -11,7 +11,7 @@ import com.znow.financemanaging.business_logic.money_transfer.MoneyTransfer;
 
 public class BalanceDao {
 	
-	File file = new File("resources/balance.txt");
+	private File file = new File("resources/balance.txt");
 	
 	public String getCurrentBalance() {
 		BufferedReader reader;

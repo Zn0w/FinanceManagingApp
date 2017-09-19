@@ -35,12 +35,6 @@ public class PromptWindow extends Window {
 		
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		JComboBox categorySelector = new JComboBox(categories);
-		categorySelector.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				
-			}
-		});
 		add(categorySelector);
 		
 		JLabel guideLabelAmount = new JLabel("Amount:");
@@ -73,7 +67,8 @@ public class PromptWindow extends Window {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
 				
-				MoneyTransfer transfer = new MoneyTransfer(key, amountTxt.getText(), 
+				MoneyTransfer transfer = new MoneyTransfer(key, (String) categorySelector.getSelectedItem(), 
+						amountTxt.getText(), 
 						commentTxt.getText(), datePicker.getModel().getValue().toString());
 				
 				controller.onSubmitMoneyTransfer(transfer);

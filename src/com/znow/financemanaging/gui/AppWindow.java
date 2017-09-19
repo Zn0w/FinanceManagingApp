@@ -28,7 +28,7 @@ public class AppWindow extends Window {
 	}
 	
 	public void drawReportsFrame() {
-		ReportsFrame reportsFrame = new ReportsFrame();
+		ReportsFrame reportsFrame = new ReportsFrame(this);
 		setContentPane(reportsFrame);
 		pack();
 	}

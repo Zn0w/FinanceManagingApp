@@ -1,5 +1,7 @@
 package com.znow.financemanaging.controllers;
 
+import java.util.ArrayList;
+
 import com.znow.financemanaging.business_logic.category.CategoryKey;
 import com.znow.financemanaging.business_logic.money_transfer.MoneyTransfer;
 import com.znow.financemanaging.data_access.CategoriesDao;
@@ -39,6 +41,7 @@ public class MainFrameController {
 	
 	public void onSubmitMoneyTransfer(MoneyTransfer transfer) {
 		System.out.println(transfer.getKey());
+		System.out.println(transfer.getCategory());
 		System.out.println(transfer.getAmount());
 		System.out.println(transfer.getComment());
 		System.out.println(transfer.getDate());
