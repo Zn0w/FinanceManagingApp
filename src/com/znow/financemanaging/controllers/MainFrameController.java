@@ -45,6 +45,8 @@ public class MainFrameController {
 		
 		MoneyTransferDao moneyTransferDao = new MoneyTransferDao();
 		moneyTransferDao.createMoneyTransfer(transfer);
+		
+		appWindow.drawMainFrame();
 	}
 	
 	public String[] getCategories(CategoryKey key) {
