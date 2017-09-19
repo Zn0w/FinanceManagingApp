@@ -61,6 +61,9 @@ public class MoneyTransferDao {
 			writer.write("\n" + transfer.getAmount() + "; " + transfer.getComment() + ";" +
 					transfer.getDate());
 			writer.flush();
+			
+			BalanceDao balanceDao = new BalanceDao();
+			balanceDao.registerMoneyTransfer(transfer);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
