@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.znow.financemanaging.controllers.MainFrameController;
+import com.znow.financemanaging.data_access.BalanceDao;
 
 @SuppressWarnings("serial")
 class MainFrame extends JPanel {
@@ -20,7 +21,8 @@ class MainFrame extends JPanel {
 		
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
-		JLabel balanceLabel = new JLabel("Your balance:");
+		JLabel balanceLabel = new JLabel("Your balance: " + 
+		new BalanceDao().getCurrentBalance());
 		balanceLabel.setAlignmentX(JPanel.CENTER_ALIGNMENT);
 		add(balanceLabel);
 		

@@ -58,7 +58,7 @@ public class MoneyTransferDao {
 		
 		try {
 			writer = new FileWriter(file, true);
-			writer.write("\n" + transfer.getAmount() + ";" + transfer.getComment() + " ;" +
+			writer.write("\n" + transfer.getAmount() + "; " + transfer.getComment() + ";" +
 					transfer.getDate());
 			writer.flush();
 		} catch (IOException e) {
