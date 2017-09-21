@@ -41,7 +41,7 @@ class ReportsFrame extends JPanel {
 		getReportButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				CategoryKey key;
+				CategoryKey key = null;
 				if (((String) categorySelector.getSelectedItem()).equals("Incomes"))
 					key = CategoryKey.INCOME_CATEGORIES;
 				else if (((String) categorySelector.getSelectedItem()).equals("Expenses"))
