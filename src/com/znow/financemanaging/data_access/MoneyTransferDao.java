@@ -33,9 +33,11 @@ public class MoneyTransferDao {
 			while ((line = reader.readLine()) != null) {
 				String[] components = line.split(";");
 				
-				MoneyTransfer moneyTranfer = new MoneyTransfer(key,components[0], components[1], 
-						components[2], components[3]);
-				moneyTransfers.add(moneyTranfer);
+				if (components.length > 2) {
+					MoneyTransfer moneyTranfer = new MoneyTransfer(key,components[0], components[1], 
+							components[2], components[3]);
+					moneyTransfers.add(moneyTranfer);
+				}
 			}
 			
 		} catch (IOException e) {

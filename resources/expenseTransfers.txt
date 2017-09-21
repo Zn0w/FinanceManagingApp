@@ -1,2 +1,2 @@
-
 Transportation;150; bus;Mon Sep 18 17:26:37 EET 2017
+Transportation;100; subway;Thu Sep 21 18:20:13 EET 2017
