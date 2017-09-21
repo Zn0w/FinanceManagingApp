@@ -29,9 +29,9 @@ public class ReportAnalyser {
 					Double.valueOf(moneyTransfer.getAmount()));
 		}
 		
-		for(Map.Entry m:categoryCounts.entrySet()){  
-			System.out.println(m.getKey()+" "+m.getValue());  
-		}  
+		for(Map.Entry mm : categoryCounts.entrySet()){
+			System.out.println(mm.getKey()+" "+mm.getValue());
+		}
 	}
 	
 }
