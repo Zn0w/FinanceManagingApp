@@ -3,6 +3,11 @@ package com.znow.financemanaging.controllers;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.swing.BoxLayout;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 import com.znow.financemanaging.business_logic.category.CategoryKey;
 import com.znow.financemanaging.business_logic.report_analysis.ReportAnalyser;
 import com.znow.financemanaging.business_logic.report_analysis.TimePeriod;
@@ -33,6 +38,22 @@ public class ReportsFrameController {
 		for(Map.Entry mm : report.entrySet()){
 			System.out.println(mm.getKey()+" "+mm.getValue());
 		}
+		
+		JFrame reportFrame = new JFrame();
+		reportFrame.setLocationRelativeTo(null);
+		reportFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
+		JPanel root = new JPanel();
+		root.setLayout(new BoxLayout(root, BoxLayout.Y_AXIS));
+		
+		for(Map.Entry mm : report.entrySet()){
+			JLabel reportLabel = new JLabel(mm.getKey() + ": " + mm.getValue());
+			root.add(reportLabel);
+		}
+		
+		reportFrame.setContentPane(root);
+		reportFrame.pack();
+		reportFrame.setVisible(true);
 	}
 	
 	public void onBackButton() {

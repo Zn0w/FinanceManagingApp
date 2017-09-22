@@ -33,8 +33,12 @@ public class ReportAnalyser {
 		else if (timePeriod == TimePeriod.YEAR) {
 			
 		}
-		
-		
+		else if (timePeriod == TimePeriod.MONTH) {
+			
+		}
+		else if (timePeriod == TimePeriod.DAY) {
+			
+		}
 		
 		return categoryCounts;
 	}
