@@ -58,6 +58,7 @@ class ReportsFrame extends JPanel {
 				controller.onBackButton();
 			}
 		});
+		add(backButton);
 	}
 	
 }

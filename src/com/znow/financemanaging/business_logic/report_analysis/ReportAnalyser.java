@@ -12,7 +12,7 @@ import com.znow.financemanaging.data_access.MoneyTransferDao;
 
 public class ReportAnalyser {
 	
-	public void getGlobalReport(CategoryKey key) {
+	public HashMap<String, Double> getReport(CategoryKey key, TimePeriod timePeriod) {
 		CategoriesDao categoriesDao = new CategoriesDao(key);
 		ArrayList<String> categories = categoriesDao.readCategoriesFile();
 		
@@ -24,14 +24,19 @@ public class ReportAnalyser {
 		MoneyTransferDao moneyTransferDao = new MoneyTransferDao();
 		List<MoneyTransfer> moneyTransfers = moneyTransferDao.getMoneyTransfers(key);
 		
-		for (MoneyTransfer moneyTransfer : moneyTransfers) {
-			categoryCounts.put(moneyTransfer.getCategory(), categoryCounts.get(moneyTransfer.getCategory()) + 
-					Double.valueOf(moneyTransfer.getAmount()));
+		if (timePeriod == TimePeriod.GLOBAL) {
+			for (MoneyTransfer moneyTransfer : moneyTransfers) {
+				categoryCounts.put(moneyTransfer.getCategory(), categoryCounts.get(moneyTransfer.getCategory()) + 
+				Double.valueOf(moneyTransfer.getAmount()));
+			}
+		}
+		else if (timePeriod == TimePeriod.YEAR) {
+			
 		}
 		
-		for(Map.Entry mm : categoryCounts.entrySet()){
-			System.out.println(mm.getKey()+" "+mm.getValue());
-		}
+		
+		
+		return categoryCounts;
 	}
 	
 }

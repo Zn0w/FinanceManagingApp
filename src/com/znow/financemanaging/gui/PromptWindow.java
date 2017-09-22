@@ -2,6 +2,8 @@ package com.znow.financemanaging.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -67,9 +69,12 @@ public class PromptWindow extends Window {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
 				
+				DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+				String date = dateFormat.format(datePicker.getModel().getValue());
+				
 				MoneyTransfer transfer = new MoneyTransfer(key, (String) categorySelector.getSelectedItem(), 
 						amountTxt.getText(), 
-						commentTxt.getText(), datePicker.getModel().getValue().toString());
+						commentTxt.getText(), date);
 				
 				controller.onSubmitMoneyTransfer(transfer);
 			}

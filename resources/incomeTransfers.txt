@@ -1,2 +1,4 @@
-Salary;2500; ;Tue Sep 05 17:26:05 EET 2017
-Freelance;50; website;Thu Sep 14 17:26:18 EET 2017
+Salary;2500; ;05.09.2017
+Freelance;50; website;14.09.2017
+Gift;1000; ;22.09.2017
+Freelance;150; site;20.09.2017
