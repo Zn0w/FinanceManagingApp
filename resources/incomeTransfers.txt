@@ -2,3 +2,4 @@ Salary;2500; ;05.09.2017
 Freelance;50; website;14.09.2017
 Gift;1000; ;22.09.2017
 Freelance;150; site;20.09.2017
+Salary;600; ;23.09.2017

@@ -35,10 +35,6 @@ public class ReportsFrameController {
 		ReportAnalyser reportAnalyser = new ReportAnalyser();
 		HashMap<String, Double> report =  reportAnalyser.getReport(key, timePeriod);
 		
-		for(Map.Entry mm : report.entrySet()){
-			System.out.println(mm.getKey()+" "+mm.getValue());
-		}
-		
 		JFrame reportFrame = new JFrame();
 		reportFrame.setLocationRelativeTo(null);
 		reportFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
